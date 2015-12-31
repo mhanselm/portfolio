@@ -1,0 +1,316 @@
+@charset 'utf-8';
+@import 'settings';
+@import 'foundation';
+@import 'motion-ui';
+@include foundation-global-styles;
+@include foundation-grid;
+@include foundation-typography;
+@include foundation-button;
+@include foundation-forms;
+@include foundation-visibility-classes;
+@include foundation-float-classes;
+@include foundation-accordion;
+@include foundation-accordion-menu;
+@include foundation-badge;
+@include foundation-breadcrumbs;
+@include foundation-button-group;
+@include foundation-callout;
+@include foundation-close-button;
+@include foundation-drilldown-menu;
+@include foundation-dropdown;
+@include foundation-dropdown-menu;
+@include foundation-flex-video;
+@include foundation-label;
+@include foundation-media-object;
+@include foundation-menu;
+@include foundation-off-canvas;
+@include foundation-orbit;
+@include foundation-pagination;
+@include foundation-progress-bar;
+@include foundation-slider;
+@include foundation-sticky;
+@include foundation-reveal;
+@include foundation-switch;
+@include foundation-table;
+@include foundation-tabs;
+@include foundation-thumbnail;
+@include foundation-title-bar;
+@include foundation-tooltip;
+@include foundation-top-bar;
+@include motion-ui-transitions;
+@include motion-ui-animations;
+.fullscreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.filter {
+  display: none;
+}
+section {
+  position: relative;
+}
+.off-canvas {
+  bottom: 0;
+  background: #121212;
+}
+
+/*
+
+  Weather icon font from http://fonts.artill.de/collection/artill-weather-icons
+
+*/
+@font-face {
+  font-family: 'weather';
+  src: url(/assets/fonts/artill_clean_icons-webfont.eot);
+  src: url(/assets/fonts/artill_clean_icons-webfont.eot?#iefix) format('embedded-opentype'), url(/assets/fonts/artill_clean_icons-webfont.woff) format('woff'), url(/assets/fonts/artill_clean_icons-webfont.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.icon-0:before {
+  content: ":";
+}
+.icon-1:before {
+  content: "p";
+}
+.icon-2:before {
+  content: "S";
+}
+.icon-3:before {
+  content: "Q";
+}
+.icon-4:before {
+  content: "S";
+}
+.icon-5:before {
+  content: "W";
+}
+.icon-6:before {
+  content: "W";
+}
+.icon-7:before {
+  content: "W";
+}
+.icon-8:before {
+  content: "W";
+}
+.icon-9:before {
+  content: "I";
+}
+.icon-10:before {
+  content: "W";
+}
+.icon-11:before {
+  content: "I";
+}
+.icon-12:before {
+  content: "I";
+}
+.icon-13:before {
+  content: "I";
+}
+.icon-14:before {
+  content: "I";
+}
+.icon-15:before {
+  content: "W";
+}
+.icon-16:before {
+  content: "I";
+}
+.icon-17:before {
+  content: "W";
+}
+.icon-18:before {
+  content: "U";
+}
+.icon-19:before {
+  content: "Z";
+}
+.icon-20:before {
+  content: "Z";
+}
+.icon-21:before {
+  content: "Z";
+}
+.icon-22:before {
+  content: "Z";
+}
+.icon-23:before {
+  content: "Z";
+}
+.icon-24:before {
+  content: "E";
+}
+.icon-25:before {
+  content: "E";
+}
+.icon-26:before {
+  content: "3";
+}
+.icon-27:before {
+  content: "a";
+}
+.icon-28:before {
+  content: "A";
+}
+.icon-29:before {
+  content: "a";
+}
+.icon-30:before {
+  content: "A";
+}
+.icon-31:before {
+  content: "6";
+}
+.icon-32:before {
+  content: "1";
+}
+.icon-33:before {
+  content: "6";
+}
+.icon-34:before {
+  content: "1";
+}
+.icon-35:before {
+  content: "W";
+}
+.icon-36:before {
+  content: "1";
+}
+.icon-37:before {
+  content: "S";
+}
+.icon-38:before {
+  content: "S";
+}
+.icon-39:before {
+  content: "S";
+}
+.icon-40:before {
+  content: "M";
+}
+.icon-41:before {
+  content: "W";
+}
+.icon-42:before {
+  content: "I";
+}
+.icon-43:before {
+  content: "W";
+}
+.icon-44:before {
+  content: "a";
+}
+.icon-45:before {
+  content: "S";
+}
+.icon-46:before {
+  content: "U";
+}
+.icon-47:before {
+  content: "S";
+}
+.name {
+  border: 0.15em solid $black;
+  display: inline-block;
+  margin: 50px auto;
+  padding: 0.35em 0.5em 0.3em;
+  transition: all 0.5s ease;
+  h1 {
+    font-family: "Roboto-Thin";
+    font-size: 4rem;
+    color: $black;
+    margin-bottom: 0;
+    line-height: 4rem;
+    vertical-align: top;
+
+    // text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+    .part {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: top;
+    }
+    small {
+      color: rgba(255,255,255, 0.8);
+    }
+  }
+}
+.menu {
+  .name {
+    margin: 15px auto;
+  }
+}
+.index-content {
+  color: $white;
+
+  // background: url(https://source.unsplash.com/random) #fff 50% no-repeat;
+  background-size: cover !important;
+  .filter {
+    display: block;
+    opacity: 0.4;
+  }
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  #weather {
+    text-transform: uppercase;
+    i {
+      color: #fff;
+      font-family: weather;
+      font-size: 4rem;
+      font-weight: 100;
+      font-style: normal;
+      line-height: 1.0;
+      text-shadow: none;
+    }
+    h2 {
+
+      //   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+      // font-family: "Roboto-Thin";
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      padding: 20px;
+      display: inline-block;
+      border-radius: 5px;
+    }
+  }
+  .image-count {
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    margin: 0;
+    cursor: pointer;
+  }
+  .time {
+    position: absolute;
+    left: 1em;
+    bottom: 1em;
+    margin: 0;
+  }
+  .track {
+    position: absolute;
+    bottom: 0;
+    height: 0.3em;
+    left: 0;
+    right: 0;
+    .progress {
+      background: rgba(255,255,255,0.4);
+      height: 100%;
+      width: 0;
+      position: absolute;
+      margin-bottom: 0;
+
+      // transition: all 1s ease-in-out;
+    }
+  }
+}
