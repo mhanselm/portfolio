@@ -245,9 +245,18 @@ section {
 }
 .index-content {
   color: $white;
-
-  // background: url(https://source.unsplash.com/random) #fff 50% no-repeat;
-  background-size: cover !important;
+  .bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+  }
+  .bg-img {
+    position: absolute;
+    max-width: none;
+  }
   .filter {
     display: block;
     opacity: 0.4;
