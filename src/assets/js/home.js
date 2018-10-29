@@ -1,4 +1,5 @@
 // 'use strict'
+
 var filters = ['16a085', '2980b9', 'f1c40f', '8e44ad', 'c0392b'],
   filterIndex = 0,
   frame = 0,
@@ -7,8 +8,8 @@ var filters = ['16a085', '2980b9', 'f1c40f', '8e44ad', 'c0392b'],
   LIMIT = 9,
   backgroundLimit = LIMIT,
   backgrounds = [],
-  progressWidth = $('.track').width(),
-  wHeight = $(document).height() - $('.top-bar').outerHeight(),
+  progressWidth,
+  wHeight,
   hour = 0,
   minutes = 0,
   seconds = 0;
@@ -123,7 +124,6 @@ function getImage() {
       changeBackgroundImage();
   }
 }
-getImage();
 
 function changeBackgroundImage(preloaded) {
   $('.bg-animate').animate({
@@ -167,6 +167,12 @@ $(window).resize(function() {
 });
 
 $(document).ready(function() {
+  $('.index-content').prepend('<div id="backgrounds" class="bg-image"></div><div class="filter fullscreen bg-animate"></div>');
+  getImage();
+
+  progressWidth = $('.track').width(),
+  wHeight = $(document).height() - $('.top-bar').outerHeight(),
+
   $('section.home').height(wHeight);
   $('.home .name').css('margin-top', wHeight / 4);
   $('#firstname').width($('#firstname').width());

@@ -26,7 +26,7 @@ var PATHS = {
     'bower_components/foundation-sites/scss',
     'bower_components/motion-ui/src/'
   ],
-  javascript: [
+  javascript_concat: [
     // 'bower_components/paper/dist/paper-full.js',
     'bower_components/jquery/dist/jquery.js',
     'bower_components/what-input/what-input.js',
@@ -53,8 +53,14 @@ var PATHS = {
     'bower_components/foundation-sites/js/foundation.toggler.js',
     'bower_components/foundation-sites/js/foundation.tooltip.js',
     'bower_components/simpleWeather/jquery.simpleWeather.min.js',
+    'bower_components/trianglify/dist/trianglify.min.js',
+    'src/assets/js/jquery.color.js',
+    'src/assets/js/app.js'
+  ],
+  javascript: [
     'src/assets/js/**/*.js'
-    ]
+  ]
+
 };
 
 // Delete the "dist" folder
@@ -126,18 +132,35 @@ gulp.task('sass', function() {
 
 // Combine JavaScript into one file
 // In production, the file is minified
+gulp.task('concat', function() {
+  var uglify = $.if(isProduction, $.uglify()
+    .on('error', function (e) {
+      console.log(e);
+    }));
+
+    // gulp.src(PATHS.javascript)
+    //   .pipe(uglify)
+    //   .pipe(gulp.dest('dist/assets/js'));
+
+  return gulp.src(PATHS.javascript_concat)
+    .pipe($.sourcemaps.init())
+    .pipe($.concat('app.js'))
+    .pipe(uglify)
+    .pipe($.if(!isProduction, $.sourcemaps.write()))
+    .pipe(gulp.dest('dist/assets/js'));
+});
+
+// Combine JavaScript into one file
+// In production, the file is minified
 gulp.task('javascript', function() {
   var uglify = $.if(isProduction, $.uglify()
     .on('error', function (e) {
       console.log(e);
     }));
 
-  return gulp.src(PATHS.javascript)
-    .pipe($.sourcemaps.init())
-    .pipe($.concat('app.js'))
-    .pipe(uglify)
-    .pipe($.if(!isProduction, $.sourcemaps.write()))
-    .pipe(gulp.dest('dist/assets/js'));
+    return gulp.src(PATHS.javascript)
+      .pipe(uglify)
+      .pipe(gulp.dest('dist/assets/js'));
 });
 
 // Copy images to the "dist" folder
@@ -154,7 +177,7 @@ gulp.task('images', function() {
 
 // Build the "dist" folder by running all of the above tasks
 gulp.task('build', function(done) {
-  sequence('clean', ['pages', 'sass', 'javascript', 'images', 'copy'], 'styleguide', done);
+  sequence('clean', ['pages', 'sass', 'concat', 'javascript', 'images', 'copy'], 'styleguide', done);
 });
 
 // Start a server with LiveReload to preview the site in
@@ -170,7 +193,7 @@ gulp.task('default', ['build', 'server'], function() {
   gulp.watch(['src/pages/**/*.html'], ['pages', browser.reload]);
   gulp.watch(['src/{layouts,partials}/**/*.html'], ['pages:reset', browser.reload]);
   gulp.watch(['src/assets/scss/**/*.scss'], ['sass', browser.reload]);
-  gulp.watch(['src/assets/js/**/*.js'], ['javascript', browser.reload]);
+  gulp.watch(['src/assets/js/**/*.js'], ['concat', 'javascript', browser.reload]);
   gulp.watch(['src/assets/img/**/*'], ['images', browser.reload]);
   gulp.watch(['src/styleguide/**'], ['styleguide', browser.reload]);
 });

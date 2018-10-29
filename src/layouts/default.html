@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matthew Hanselman</title>
+    <title>{{title}}</title>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{root}}assets/css/app.css">
 
   </head>
-  <body class="{{page}}">
+  <body class="{{_page}}">
 
     <div class="off-canvas-wrapper">
         <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
@@ -17,9 +17,7 @@
             {{> sidenav}}
           </div>
           <div class="off-canvas-content" data-off-canvas-content>
-            <div class="{{page}}-content">
-              <div id="backgrounds" class="bg-image"></div>
-              <div class="filter fullscreen bg-animate"></div>
+            <div class="{{_page}}-content">
               {{> navbar}}
               {{> body}}
             </div>
@@ -28,5 +26,6 @@
       </div>
 
     <script src="{{root}}assets/js/app.js"></script>
+    <script src="{{root}}assets/js/{{javascript}}"></script>
   </body>
 </html>
